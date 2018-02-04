@@ -19,6 +19,13 @@ public class MotorolaDroidMethodService extends InputMethodService {
 
     @BindView(R.id.alt_left) TextView altLeft;
     @BindView(R.id.alt_right) TextView altRight;
+    @BindView(R.id.cap_left) TextView capsLeft;
+    @BindView(R.id.cap_right) TextView capsRight;
+
+    private int WHITE = 0;
+    private int LIGHT_BLACK = 0;
+    private int LIGHT_ORANGE = 0;
+    private int CYAN = 0;
 
     private static Map<Integer,Pair<Character,Character>> keyboardPairs = null;
     private Selection caps = Selection.OFF;
@@ -62,6 +69,15 @@ public class MotorolaDroidMethodService extends InputMethodService {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        WHITE = ContextCompat.getColor(this, R.color.whiteColor);
+        LIGHT_BLACK = ContextCompat.getColor(this, R.color.colorPrimary);
+        LIGHT_ORANGE = ContextCompat.getColor(this, R.color.lightOrangeColor);
+        CYAN = ContextCompat.getColor(this, R.color.colorAccent);
+    }
+
+    @Override
     public View onCreateInputView() {
         View view = getLayoutInflater().inflate(R.layout.keyboard_view, null);
         ButterKnife.bind(this, view);
@@ -72,23 +88,18 @@ public class MotorolaDroidMethodService extends InputMethodService {
     public void onAltClick() {
         // change our alt button to the appropriate setting
         alt = alt == Selection.OFF ? Selection.ONCE : (alt == Selection.ONCE ? Selection.FOREVER : Selection.OFF);
-        int orange = getColorResourceHelper(R.color.lightOrangeColor);
-        int lightBlack = getColorResourceHelper(R.color.colorPrimary);
-        int cyan = getColorResourceHelper(R.color.colorAccent);
-        if(alt == Selection.OFF) {
-            altLeft.setTextColor(orange);
-            altRight.setTextColor(orange);
-            altLeft.setBackgroundColor(lightBlack);
-            altRight.setBackgroundColor(lightBlack);
-        } else if(alt == Selection.ONCE) {
-            altLeft.setTextColor(cyan);
-            altRight.setTextColor(cyan);
-        } else {
-            altLeft.setTextColor(orange);
-            altRight.setTextColor(orange);
-            altLeft.setBackgroundColor(cyan);
-            altRight.setBackgroundColor(cyan);
-        }
+        if(alt == Selection.OFF) turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, LIGHT_BLACK);
+        else if(alt == Selection.ONCE) turnSelectionOnceHelper(altLeft, altRight, CYAN);
+        else turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, CYAN);
+    }
+
+    @OnClick({R.id.cap_left, R.id.cap_right})
+    public void onCapsClick() {
+        // change our caps button to the appropriate setting
+        caps = caps == Selection.OFF ? Selection.ONCE : (caps == Selection.ONCE ? Selection.FOREVER : Selection.OFF);
+        if(caps == Selection.OFF) turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
+        else if(caps == Selection.ONCE) turnSelectionOnceHelper(capsLeft, capsRight, CYAN);
+        else turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, CYAN);
     }
 
     @OnClick(R.id.enter)
@@ -121,14 +132,35 @@ public class MotorolaDroidMethodService extends InputMethodService {
     public void onPairClick(View view) {
         InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
-//            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
-//            char c = alt ? pair.second : (caps ? Character.toUpperCase(pair.first) : pair.first);
-//            inputConnection.commitText(String.valueOf(c), 1);
+            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
+            // find out what character needs to be displayed
+            char c;
+            if(alt == Selection.OFF) c = caps == Selection.OFF ? pair.first : Character.toUpperCase(pair.first);
+            else c = pair.second;
+            // display character
+            inputConnection.commitText(String.valueOf(c), 1);
+            // reset alt and caps if needed
+            if(alt == Selection.ONCE) {
+                alt = Selection.OFF;
+                turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, LIGHT_BLACK);
+            }
+            if(caps == Selection.ONCE) {
+                caps = Selection.OFF;
+                turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
+            }
         }
     }
 
-    private int getColorResourceHelper(int colorId) {
-        return ContextCompat.getColor(this, colorId);
+    private void turnSelectionOffOrForeverHelper(TextView left, TextView right, int textColor, int backgroundColor) {
+        left.setTextColor(textColor);
+        right.setTextColor(textColor);
+        left.setBackgroundColor(backgroundColor);
+        right.setBackgroundColor(backgroundColor);
+    }
+
+    private void turnSelectionOnceHelper(TextView left, TextView right, int textColor) {
+        left.setTextColor(textColor);
+        right.setTextColor(textColor);
     }
 
 }
