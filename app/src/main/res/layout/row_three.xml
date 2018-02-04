@@ -8,16 +8,13 @@
     android:paddingLeft="2dp"
     android:paddingRight="2dp">
 
-    <TextView
+    <ImageView
         android:id="@+id/cap_left"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginRight="1dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="Cap"
-        android:textColor="@color/whiteColor" />
+        android:background="@color/colorPrimary" />
 
     <RelativeLayout
         android:id="@+id/z_less_than"
@@ -280,15 +277,12 @@
 
     </RelativeLayout>
 
-    <TextView
+    <ImageView
         android:id="@+id/cap_right"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="Cap"
-        android:textColor="@color/whiteColor" />
+        android:background="@color/colorPrimary" />
 
 </LinearLayout>

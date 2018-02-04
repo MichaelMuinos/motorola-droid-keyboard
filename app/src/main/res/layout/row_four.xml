@@ -27,17 +27,14 @@
         android:text="Alt"
         android:textColor="@color/lightOrangeColor" />
 
-    <TextView
+    <ImageView
         android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="S"
-        android:textColor="@color/whiteColor"/>
+        android:background="@color/colorPrimary" />
 
     <!--<RelativeLayout-->
         <!--android:id="@+id/left_bracket_duo"-->

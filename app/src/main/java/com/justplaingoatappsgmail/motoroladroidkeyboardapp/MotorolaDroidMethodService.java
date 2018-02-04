@@ -1,6 +1,5 @@
 package com.justplaingoatappsgmail.motoroladroidkeyboardapp;
 
-import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -10,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -25,8 +24,9 @@ public class MotorolaDroidMethodService extends InputMethodService {
 
     @BindView(R.id.alt_left) TextView altLeft;
     @BindView(R.id.alt_right) TextView altRight;
-    @BindView(R.id.cap_left) TextView capsLeft;
-    @BindView(R.id.cap_right) TextView capsRight;
+    @BindView(R.id.cap_left) ImageView capsLeft;
+    @BindView(R.id.cap_right) ImageView capsRight;
+    @BindView(R.id.search) ImageView search;
 
     private int WHITE = 0;
     private int LIGHT_BLACK = 0;
@@ -91,6 +91,9 @@ public class MotorolaDroidMethodService extends InputMethodService {
     public View onCreateInputView() {
         View view = getLayoutInflater().inflate(R.layout.keyboard_view, null);
         ButterKnife.bind(this, view);
+        search.setImageResource(android.R.drawable.ic_menu_search);
+        capsLeft.setImageResource(android.R.drawable.ic_menu_upload);
+        capsRight.setImageResource(android.R.drawable.ic_menu_upload);
         return view;
     }
 
@@ -223,9 +226,21 @@ public class MotorolaDroidMethodService extends InputMethodService {
         right.setBackgroundColor(backgroundColor);
     }
 
+    private void turnSelectionOffOrForeverHelper(ImageView left, ImageView right, int imageColor, int backgroundColor) {
+        left.setColorFilter(imageColor);
+        right.setColorFilter(imageColor);
+        left.setBackgroundColor(backgroundColor);
+        right.setBackgroundColor(backgroundColor);
+    }
+
     private void turnSelectionOnceHelper(TextView left, TextView right, int textColor) {
         left.setTextColor(textColor);
         right.setTextColor(textColor);
+    }
+
+    private void turnSelectionOnceHelper(ImageView left, ImageView right, int imageColor) {
+        left.setColorFilter(imageColor);
+        right.setColorFilter(imageColor);
     }
 
 }
