@@ -6,20 +6,20 @@
     android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-            <include layout="@layout/row" />
+        <include layout="@layout/row" />
 
-            <include layout="@layout/row_two" />
+        <include layout="@layout/row_two" />
 
-            <include layout="@layout/row_three" />
+        <include layout="@layout/row_three" />
 
-            <include layout="@layout/row_four" />
+        <include layout="@layout/row_four" />
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
+</RelativeLayout>

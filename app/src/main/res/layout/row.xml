@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
+    android:background="@color/colorPrimaryDark"
     android:orientation="horizontal"
     android:padding="2dp">
 
@@ -64,6 +64,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/e_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -92,6 +93,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/r_4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -120,6 +122,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/t_5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -148,6 +151,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/y_6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -176,6 +180,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/u_7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -204,6 +209,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/i_8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -232,6 +238,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/o_9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -260,6 +267,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/p_0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -288,6 +296,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/del"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="1dp"

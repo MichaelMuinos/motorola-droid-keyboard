@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
+    android:background="@color/colorPrimaryDark"
     android:orientation="horizontal"
     android:paddingBottom="2dp"
     android:paddingLeft="2dp"
     android:paddingRight="2dp">
 
     <TextView
+        android:id="@+id/cap_left"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginRight="1dp"
@@ -19,6 +20,7 @@
         android:textColor="@color/whiteColor" />
 
     <RelativeLayout
+        android:id="@+id/z_less_than"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:text="!"
+            android:text="<"
             android:textColor="@color/lightOrangeColor" />
 
         <TextView
@@ -47,6 +49,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/x_greater_than"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -75,6 +78,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/c_underscore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -103,6 +107,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/v_dash"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -131,6 +136,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/b_plus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -159,6 +165,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/n_quote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -187,6 +194,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/m_tick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -215,6 +223,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/comma_semi_colon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -243,6 +252,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/period_colon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -271,6 +281,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/cap_right"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="1dp"

@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
+    android:background="@color/colorPrimaryDark"
     android:orientation="horizontal"
     android:paddingBottom="2dp"
     android:paddingLeft="2dp"
     android:paddingRight="2dp">
 
     <RelativeLayout
+        android:id="@+id/a_pipe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="1dp"
@@ -36,6 +37,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/s_exclamation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -64,6 +66,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/d_hashtag"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -92,6 +95,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/f_$"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -120,6 +124,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/g_percentage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -148,6 +153,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/h_equal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -176,6 +182,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/j_and"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -204,6 +211,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/k_astrick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -232,6 +240,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/l_left_paren"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -260,6 +269,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/question_mark_right_paren"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -288,6 +298,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/enter"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="1dp"
