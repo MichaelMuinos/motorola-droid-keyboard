@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +30,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
 
     private int WHITE = 0;
     private int LIGHT_BLACK = 0;
+    private int GRAY = 0;
     private int LIGHT_ORANGE = 0;
     private int CYAN = 0;
 
@@ -77,7 +77,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
         keyboardPairs.put(R.id.period_colon, new Pair<>('.', ':'));
         keyboardPairs.put(R.id.at_squiggly, new Pair<>('@', '~'));
         keyboardPairs.put(R.id.slash_carrot, new Pair<>('/', '^'));
-        keyboardPairs.put(R.id.right_bracket_duo, new Pair<>('}', ']'));
+        keyboardPairs.put(R.id.brackets, new Pair<>('[', ']'));
     }
 
     @Override
@@ -85,6 +85,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
         super.onCreate();
         WHITE = ContextCompat.getColor(this, R.color.whiteColor);
         LIGHT_BLACK = ContextCompat.getColor(this, R.color.colorPrimary);
+        GRAY = ContextCompat.getColor(this, R.color.colorPrimaryLight);
         LIGHT_ORANGE = ContextCompat.getColor(this, R.color.lightOrangeColor);
         CYAN = ContextCompat.getColor(this, R.color.colorAccent);
     }
@@ -139,17 +140,27 @@ public class MotorolaDroidMethodService extends InputMethodService {
         else turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, CYAN);
     }
 
-    @OnClick(R.id.enter)
-    public void onEnterClick() {
-        InputConnection inputConnection = getCurrentInputConnection();
-        if(inputConnection != null) inputConnection.commitText("\n", 1);
-    }
-
-    @OnTouch(R.id.space)
-    public boolean onSpaceTouchClick(MotionEvent event) {
+    @OnTouch(R.id.enter)
+    public boolean onEnterTouch(View view, MotionEvent event) {
         InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                view.setBackgroundColor(GRAY);
+            } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                inputConnection.commitText("\n", 1);
+                view.setBackgroundColor(LIGHT_BLACK);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @OnTouch(R.id.space)
+    public boolean onSpaceTouch(View view, MotionEvent event) {
+        InputConnection inputConnection = getCurrentInputConnection();
+        if(inputConnection != null) {
+            if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                view.setBackgroundColor(GRAY);
                 spaceDown = true;
                 spaceThread = new Thread(() -> {
                     inputConnection.commitText(" ", 1);
@@ -161,6 +172,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
                 });
                 spaceThread.start();
             } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                view.setBackgroundColor(LIGHT_BLACK);
                 spaceDown = false;
                 if(spaceThread.isAlive()) spaceThread.interrupt();
             }
@@ -170,10 +182,11 @@ public class MotorolaDroidMethodService extends InputMethodService {
     }
 
     @OnTouch(R.id.del)
-    public boolean onDeleteTouchClick(MotionEvent event) {
+    public boolean onDeleteTouch(View view, MotionEvent event) {
         final InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                view.setBackgroundColor(GRAY);
                 deleteDown = true;
                 deleteThread = new Thread(() -> {
                     deleteLastCharacter(inputConnection);
@@ -185,6 +198,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
                 });
                 deleteThread.start();
             } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                view.setBackgroundColor(LIGHT_BLACK);
                 deleteDown = false;
                 if(deleteThread.isAlive()) deleteThread.interrupt();
             }
@@ -193,31 +207,40 @@ public class MotorolaDroidMethodService extends InputMethodService {
         return false;
     }
 
-    @OnClick({R.id.q_1, R.id.w_2, R.id.e_3, R.id.r_4, R.id.t_5, R.id.y_6, R.id.u_7, R.id.i_8, R.id.o_9, R.id.p_0,
+    @OnTouch({R.id.q_1, R.id.w_2, R.id.e_3, R.id.r_4, R.id.t_5, R.id.y_6, R.id.u_7, R.id.i_8, R.id.o_9, R.id.p_0,
             R.id.a_pipe, R.id.s_exclamation, R.id.d_hashtag, R.id.f_dollar_sign, R.id.g_percentage, R.id.h_equal,
             R.id.j_and, R.id.k_astrick, R.id.l_left_paren, R.id.question_mark_right_paren, R.id.z_less_than, R.id.x_greater_than,
             R.id.c_underscore, R.id.v_dash, R.id.b_plus, R.id.n_quote, R.id.m_tick, R.id.comma_semi_colon, R.id.period_colon,
-            R.id.at_squiggly, R.id.slash_carrot, R.id.right_bracket_duo})
-    public void onPairClick(View view) {
+            R.id.at_squiggly, R.id.slash_carrot, R.id.brackets})
+    public boolean onPairTouch(View view, MotionEvent event) {
         InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
-            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
-            // find out what character needs to be displayed
-            char c;
-            if(alt == Selection.OFF) c = caps == Selection.OFF ? pair.first : Character.toUpperCase(pair.first);
-            else c = pair.second;
-            // display character
-            inputConnection.commitText(String.valueOf(c), 1);
-            // reset alt and caps if needed
-            if(alt == Selection.ONCE) {
-                alt = Selection.OFF;
-                turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, LIGHT_BLACK);
+            if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                view.setBackgroundColor(GRAY);
+            } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                Pair<Character, Character> pair = keyboardPairs.get(view.getId());
+                // find out what character needs to be displayed
+                char c;
+                if (alt == Selection.OFF)
+                    c = caps == Selection.OFF ? pair.first : Character.toUpperCase(pair.first);
+                else c = pair.second;
+                // display character
+                inputConnection.commitText(String.valueOf(c), 1);
+                // change background color to normal
+                view.setBackgroundColor(LIGHT_BLACK);
+                // reset alt and caps if needed
+                if (alt == Selection.ONCE) {
+                    alt = Selection.OFF;
+                    turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, LIGHT_BLACK);
+                }
+                if (caps == Selection.ONCE) {
+                    caps = Selection.OFF;
+                    turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
+                }
             }
-            if(caps == Selection.ONCE) {
-                caps = Selection.OFF;
-                turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
-            }
+            return true;
         }
+        return false;
     }
 
     private void sleepThread(Thread thread, int milliseconds) {
@@ -237,15 +260,13 @@ public class MotorolaDroidMethodService extends InputMethodService {
     }
 
     private void turnSelectionOffOrForeverHelper(TextView left, TextView right, int textColor, int backgroundColor) {
-        left.setTextColor(textColor);
-        right.setTextColor(textColor);
+        turnSelectionOnceHelper(left, right, textColor);
         left.setBackgroundColor(backgroundColor);
         right.setBackgroundColor(backgroundColor);
     }
 
     private void turnSelectionOffOrForeverHelper(ImageView left, ImageView right, int imageColor, int backgroundColor) {
-        left.setColorFilter(imageColor);
-        right.setColorFilter(imageColor);
+        turnSelectionOnceHelper(left, right, imageColor);
         left.setBackgroundColor(backgroundColor);
         right.setBackgroundColor(backgroundColor);
     }
