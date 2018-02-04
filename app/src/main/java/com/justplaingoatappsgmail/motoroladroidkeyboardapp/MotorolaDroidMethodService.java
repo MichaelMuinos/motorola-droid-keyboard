@@ -1,19 +1,28 @@
 package com.justplaingoatappsgmail.motoroladroidkeyboardapp;
 
 import android.inputmethodservice.InputMethodService;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+import android.widget.TextView;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MotorolaDroidMethodService extends InputMethodService {
 
+    @BindView(R.id.alt_left) TextView altLeft;
+    @BindView(R.id.alt_right) TextView altRight;
+
     private static Map<Integer,Pair<Character,Character>> keyboardPairs = null;
-    private boolean caps = false;
-    private boolean alt = false;
+    private Selection caps = Selection.OFF;
+    private Selection alt = Selection.OFF;
 
     static {
         keyboardPairs = new HashMap<>();
@@ -59,6 +68,51 @@ public class MotorolaDroidMethodService extends InputMethodService {
         return view;
     }
 
+    @OnClick({R.id.alt_left, R.id.alt_right})
+    public void onAltClick() {
+        // change our alt button to the appropriate setting
+        alt = alt == Selection.OFF ? Selection.ONCE : (alt == Selection.ONCE ? Selection.FOREVER : Selection.OFF);
+        int orange = getColorResourceHelper(R.color.lightOrangeColor);
+        int lightBlack = getColorResourceHelper(R.color.colorPrimary);
+        int cyan = getColorResourceHelper(R.color.colorAccent);
+        if(alt == Selection.OFF) {
+            altLeft.setTextColor(orange);
+            altRight.setTextColor(orange);
+            altLeft.setBackgroundColor(lightBlack);
+            altRight.setBackgroundColor(lightBlack);
+        } else if(alt == Selection.ONCE) {
+            altLeft.setTextColor(cyan);
+            altRight.setTextColor(cyan);
+        } else {
+            altLeft.setTextColor(orange);
+            altRight.setTextColor(orange);
+            altLeft.setBackgroundColor(cyan);
+            altRight.setBackgroundColor(cyan);
+        }
+    }
+
+    @OnClick(R.id.enter)
+    public void onEnterClick() {
+        InputConnection inputConnection = getCurrentInputConnection();
+        if(inputConnection != null) inputConnection.commitText("\n", 1);
+    }
+
+    @OnClick(R.id.space)
+    public void onSpaceClick() {
+        InputConnection inputConnection = getCurrentInputConnection();
+        if(inputConnection != null) inputConnection.commitText(" ", 1);
+    }
+
+    @OnClick(R.id.del)
+    public void onDeleteClick() {
+        InputConnection inputConnection = getCurrentInputConnection();
+        if(inputConnection != null) {
+            CharSequence selectedText = inputConnection.getSelectedText(0);
+            if (TextUtils.isEmpty(selectedText)) inputConnection.deleteSurroundingText(1, 0);
+            else inputConnection.commitText("", 1);
+        }
+    }
+
     @OnClick({R.id.q_1, R.id.w_2, R.id.e_3, R.id.r_4, R.id.t_5, R.id.y_6, R.id.u_7, R.id.i_8, R.id.o_9, R.id.p_0,
             R.id.a_pipe, R.id.s_exclamation, R.id.d_hashtag, R.id.f_dollar_sign, R.id.g_percentage, R.id.h_equal,
             R.id.j_and, R.id.k_astrick, R.id.l_left_paren, R.id.question_mark_right_paren, R.id.z_less_than, R.id.x_greater_than,
@@ -67,10 +121,14 @@ public class MotorolaDroidMethodService extends InputMethodService {
     public void onPairClick(View view) {
         InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
-            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
-            char c = alt ? pair.second : (caps ? Character.toUpperCase(pair.first) : pair.first);
-            inputConnection.commitText(String.valueOf(c), 1);
+//            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
+//            char c = alt ? pair.second : (caps ? Character.toUpperCase(pair.first) : pair.first);
+//            inputConnection.commitText(String.valueOf(c), 1);
         }
+    }
+
+    private int getColorResourceHelper(int colorId) {
+        return ContextCompat.getColor(this, colorId);
     }
 
 }
