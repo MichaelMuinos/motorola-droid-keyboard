@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:text="<"
+            android:text="&lt;"
             android:textColor="@color/lightOrangeColor" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:text=">"
+            android:text="&gt;"
             android:textColor="@color/lightOrangeColor" />
 
         <TextView
@@ -179,7 +179,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:text='"'
+            android:text='&quot;'
             android:textColor="@color/lightOrangeColor" />
 
         <TextView

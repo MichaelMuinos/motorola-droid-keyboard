@@ -95,7 +95,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/f_$"
+        android:id="@+id/f_dollar_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"

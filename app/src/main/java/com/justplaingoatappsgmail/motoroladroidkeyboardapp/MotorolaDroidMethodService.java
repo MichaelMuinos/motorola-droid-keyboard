@@ -28,7 +28,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
         keyboardPairs.put(R.id.a_pipe, new Pair<>('a', '|'));
         keyboardPairs.put(R.id.s_exclamation, new Pair<>('s', '!'));
         keyboardPairs.put(R.id.d_hashtag, new Pair<>('d', '#'));
-        keyboardPairs.put(R.id.f_$, new Pair<>('f', '$'));
+        keyboardPairs.put(R.id.f_dollar_sign, new Pair<>('f', '$'));
         keyboardPairs.put(R.id.g_percentage, new Pair<>('g', '%'));
         keyboardPairs.put(R.id.h_equal, new Pair<>('h', '='));
         keyboardPairs.put(R.id.j_and, new Pair<>('j', '&'));
@@ -57,10 +57,10 @@ public class MotorolaDroidMethodService extends InputMethodService {
         return view;
     }
 
-    @OnClick
+    @OnClick(R.id.astrick)
     public void onOneClick() {
         InputConnection inputConnection = getCurrentInputConnection();
-        inputConnection.commitText("1", 1);
+        inputConnection.commitText("*", 1);
     }
 
 }
