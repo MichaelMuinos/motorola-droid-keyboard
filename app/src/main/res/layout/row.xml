@@ -7,6 +7,7 @@
     android:padding="2dp">
 
     <RelativeLayout
+        android:id="@+id/q_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="1dp"
@@ -14,7 +15,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/pipe"
+            android:id="@+id/one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -25,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/pipe"
+            android:layout_below="@+id/one"
             android:paddingLeft="5dp"
             android:text="Q"
             android:textColor="@color/whiteColor"
@@ -34,6 +35,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/w_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -42,7 +44,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/less_than"
+            android:id="@+id/two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -53,7 +55,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/less_than"
+            android:layout_below="@+id/two"
             android:paddingLeft="5dp"
             android:text="W"
             android:textColor="@color/whiteColor"
@@ -70,7 +72,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/greater_than"
+            android:id="@+id/three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -81,7 +83,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/greater_than"
+            android:layout_below="@+id/three"
             android:paddingLeft="5dp"
             android:text="E"
             android:textColor="@color/whiteColor"
@@ -98,7 +100,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/squiggly"
+            android:id="@+id/four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -109,7 +111,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/squiggly"
+            android:layout_below="@+id/four"
             android:paddingLeft="5dp"
             android:text="R"
             android:textColor="@color/whiteColor"
@@ -126,7 +128,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/minus"
+            android:id="@+id/five"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -137,7 +139,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/minus"
+            android:layout_below="@+id/five"
             android:paddingLeft="5dp"
             android:text="T"
             android:textColor="@color/whiteColor"
@@ -154,7 +156,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/plus"
+            android:id="@+id/six"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -165,7 +167,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/plus"
+            android:layout_below="@+id/six"
             android:paddingLeft="5dp"
             android:text="Y"
             android:textColor="@color/whiteColor"
@@ -182,7 +184,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/quote"
+            android:id="@+id/seven"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -193,7 +195,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/quote"
+            android:layout_below="@+id/seven"
             android:paddingLeft="5dp"
             android:text="U"
             android:textColor="@color/whiteColor"
@@ -210,7 +212,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/carrot"
+            android:id="@+id/eight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -221,7 +223,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/carrot"
+            android:layout_below="@+id/eight"
             android:paddingLeft="5dp"
             android:text="I"
             android:textColor="@color/whiteColor"
@@ -238,7 +240,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/semi_colon"
+            android:id="@+id/nine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -249,7 +251,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/semi_colon"
+            android:layout_below="@+id/nine"
             android:paddingLeft="5dp"
             android:text="O"
             android:textColor="@color/whiteColor"
@@ -266,7 +268,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/colon"
+            android:id="@+id/zero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -277,7 +279,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/colon"
+            android:layout_below="@+id/zero"
             android:paddingLeft="5dp"
             android:text="P"
             android:textColor="@color/whiteColor"

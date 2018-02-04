@@ -44,7 +44,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/less_than"
+            android:id="@+id/exclamation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/less_than"
+            android:layout_below="@+id/exclamation"
             android:paddingLeft="5dp"
             android:text="S"
             android:textColor="@color/whiteColor"
@@ -72,7 +72,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/greater_than"
+            android:id="@+id/hashtag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -83,7 +83,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/greater_than"
+            android:layout_below="@+id/hashtag"
             android:paddingLeft="5dp"
             android:text="D"
             android:textColor="@color/whiteColor"
@@ -100,7 +100,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/squiggly"
+            android:id="@+id/dollar_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/squiggly"
+            android:layout_below="@+id/dollar_sign"
             android:paddingLeft="5dp"
             android:text="F"
             android:textColor="@color/whiteColor"
@@ -128,7 +128,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/minus"
+            android:id="@+id/percentage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -139,7 +139,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/minus"
+            android:layout_below="@+id/percentage"
             android:paddingLeft="5dp"
             android:text="G"
             android:textColor="@color/whiteColor"
@@ -156,7 +156,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/plus"
+            android:id="@+id/equal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -167,7 +167,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/plus"
+            android:layout_below="@+id/equal"
             android:paddingLeft="5dp"
             android:text="H"
             android:textColor="@color/whiteColor"
@@ -184,7 +184,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/quote"
+            android:id="@+id/and"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -195,7 +195,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/quote"
+            android:layout_below="@+id/and"
             android:paddingLeft="5dp"
             android:text="J"
             android:textColor="@color/whiteColor"
@@ -217,7 +217,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:paddingRight="5dp"
-            android:text="8"
+            android:text="*"
             android:textColor="@color/lightOrangeColor" />
 
         <TextView
