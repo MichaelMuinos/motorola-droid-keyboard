@@ -12,6 +12,8 @@ import butterknife.OnClick;
 public class MotorolaDroidMethodService extends InputMethodService {
 
     private static Map<Integer,Pair<Character,Character>> keyboardPairs = null;
+    private boolean caps = false;
+    private boolean alt = false;
 
     static {
         keyboardPairs = new HashMap<>();
@@ -57,10 +59,18 @@ public class MotorolaDroidMethodService extends InputMethodService {
         return view;
     }
 
-    @OnClick(R.id.astrick)
-    public void onOneClick() {
+    @OnClick({R.id.q_1, R.id.w_2, R.id.e_3, R.id.r_4, R.id.t_5, R.id.y_6, R.id.u_7, R.id.i_8, R.id.o_9, R.id.p_0,
+            R.id.a_pipe, R.id.s_exclamation, R.id.d_hashtag, R.id.f_dollar_sign, R.id.g_percentage, R.id.h_equal,
+            R.id.j_and, R.id.k_astrick, R.id.l_left_paren, R.id.question_mark_right_paren, R.id.z_less_than, R.id.x_greater_than,
+            R.id.c_underscore, R.id.v_dash, R.id.b_plus, R.id.n_quote, R.id.m_tick, R.id.comma_semi_colon, R.id.period_colon,
+            R.id.left_bracket_duo, R.id.at_squiggly, R.id.slash_carrot, R.id.right_bracket_duo})
+    public void onPairClick(View view) {
         InputConnection inputConnection = getCurrentInputConnection();
-        inputConnection.commitText("*", 1);
+        if(inputConnection != null) {
+            Pair<Character,Character> pair = keyboardPairs.get(view.getId());
+            char c = alt ? pair.second : (caps ? Character.toUpperCase(pair.first) : pair.first);
+            inputConnection.commitText(String.valueOf(c), 1);
+        }
     }
 
 }
