@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +38,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
     private boolean spaceDown = false;
 
     private Thread deleteThread;
+    private Thread spaceThread;
 
     private static Map<Integer,Pair<Character,Character>> keyboardPairs = null;
     private Selection caps = Selection.OFF;
@@ -143,27 +145,42 @@ public class MotorolaDroidMethodService extends InputMethodService {
         if(inputConnection != null) inputConnection.commitText("\n", 1);
     }
 
-    @OnClick(R.id.space)
-    public void onSpaceClick() {
+    @OnTouch(R.id.space)
+    public boolean onSpaceTouchClick(MotionEvent event) {
         InputConnection inputConnection = getCurrentInputConnection();
-        if(inputConnection != null) inputConnection.commitText(" ", 1);
+        if(inputConnection != null) {
+            if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                spaceDown = true;
+                spaceThread = new Thread(() -> {
+                    inputConnection.commitText(" ", 1);
+                    sleepThread(spaceThread, 900);
+                    while(spaceDown) {
+                        inputConnection.commitText(" ", 1);
+                        sleepThread(spaceThread, 90);
+                    }
+                });
+                spaceThread.start();
+            } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                spaceDown = false;
+                if(spaceThread.isAlive()) spaceThread.interrupt();
+            }
+            return true;
+        }
+        return false;
     }
 
     @OnTouch(R.id.del)
-    public boolean onTouchClick(MotionEvent event) {
+    public boolean onDeleteTouchClick(MotionEvent event) {
         final InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
                 deleteDown = true;
-                deleteThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+                deleteThread = new Thread(() -> {
+                    deleteLastCharacter(inputConnection);
+                    sleepThread(deleteThread, 900);
+                    while(deleteDown) {
                         deleteLastCharacter(inputConnection);
-                        sleepThread(deleteThread, 900);
-                        while(deleteDown) {
-                            deleteLastCharacter(inputConnection);
-                            sleepThread(deleteThread, 90);
-                        }
+                        sleepThread(deleteThread, 90);
                     }
                 });
                 deleteThread.start();
