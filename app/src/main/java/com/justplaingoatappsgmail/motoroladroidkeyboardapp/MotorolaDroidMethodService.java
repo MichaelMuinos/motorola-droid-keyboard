@@ -4,6 +4,7 @@ import android.inputmethodservice.InputMethodService;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Pair;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
 public class MotorolaDroidMethodService extends InputMethodService {
 
@@ -26,6 +28,11 @@ public class MotorolaDroidMethodService extends InputMethodService {
     private int LIGHT_BLACK = 0;
     private int LIGHT_ORANGE = 0;
     private int CYAN = 0;
+
+    private boolean deleteDown = false;
+    private boolean spaceDown = false;
+
+    private Thread deleteThread;
 
     private static Map<Integer,Pair<Character,Character>> keyboardPairs = null;
     private Selection caps = Selection.OFF;
@@ -114,14 +121,31 @@ public class MotorolaDroidMethodService extends InputMethodService {
         if(inputConnection != null) inputConnection.commitText(" ", 1);
     }
 
-    @OnClick(R.id.del)
-    public void onDeleteClick() {
-        InputConnection inputConnection = getCurrentInputConnection();
+    @OnTouch(R.id.del)
+    public boolean onTouchClick(MotionEvent event) {
+        final InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
-            CharSequence selectedText = inputConnection.getSelectedText(0);
-            if (TextUtils.isEmpty(selectedText)) inputConnection.deleteSurroundingText(1, 0);
-            else inputConnection.commitText("", 1);
+            if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                deleteDown = true;
+                deleteThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        deleteLastCharacter(inputConnection);
+                        sleepThread(deleteThread, 900);
+                        while(deleteDown) {
+                            deleteLastCharacter(inputConnection);
+                            sleepThread(deleteThread, 100);
+                        }
+                    }
+                });
+                deleteThread.start();
+            } else if(event.getAction() == MotionEvent.ACTION_UP) {
+                deleteDown = false;
+                if(deleteThread.isAlive()) deleteThread.interrupt();
+            }
+            return true;
         }
+        return false;
     }
 
     @OnClick({R.id.q_1, R.id.w_2, R.id.e_3, R.id.r_4, R.id.t_5, R.id.y_6, R.id.u_7, R.id.i_8, R.id.o_9, R.id.p_0,
@@ -149,6 +173,22 @@ public class MotorolaDroidMethodService extends InputMethodService {
                 turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
             }
         }
+    }
+
+    private void sleepThread(Thread thread, int milliseconds) {
+        if(!thread.isInterrupted()) {
+            try {
+                thread.sleep(milliseconds);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void deleteLastCharacter(InputConnection inputConnection) {
+        CharSequence selectedText = inputConnection.getSelectedText(0);
+        if (TextUtils.isEmpty(selectedText)) inputConnection.deleteSurroundingText(1, 0);
+        else inputConnection.commitText("", 1);
     }
 
     private void turnSelectionOffOrForeverHelper(TextView left, TextView right, int textColor, int backgroundColor) {
