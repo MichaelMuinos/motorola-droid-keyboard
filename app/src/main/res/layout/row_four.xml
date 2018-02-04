@@ -27,34 +27,46 @@
         android:text="Alt"
         android:textColor="@color/lightOrangeColor" />
 
-    <RelativeLayout
-        android:id="@+id/left_bracket_duo"
+    <TextView
+        android:id="@+id/search"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="@color/whiteColor"/>
 
-        <TextView
-            android:id="@+id/left_bracket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:paddingRight="5dp"
-            android:text="["
-            android:textColor="@color/lightOrangeColor" />
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/left_bracket_duo"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="1dp"-->
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@color/colorPrimary">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/left_bracket"
-            android:paddingLeft="5dp"
-            android:text="{"
-            android:textColor="@color/whiteColor"
-            android:textSize="17sp" />
+        <!--<TextView-->
+            <!--android:id="@+id/left_bracket"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="right"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:text="["-->
+            <!--android:textColor="@color/lightOrangeColor" />-->
 
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/left_bracket"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:text="{"-->
+            <!--android:textColor="@color/whiteColor"-->
+            <!--android:textSize="17sp" />-->
+
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/at_squiggly"

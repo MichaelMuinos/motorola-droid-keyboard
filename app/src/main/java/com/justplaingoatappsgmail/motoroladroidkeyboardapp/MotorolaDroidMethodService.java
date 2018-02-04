@@ -1,12 +1,16 @@
 package com.justplaingoatappsgmail.motoroladroidkeyboardapp;
 
+import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Pair;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -69,7 +73,6 @@ public class MotorolaDroidMethodService extends InputMethodService {
         keyboardPairs.put(R.id.m_tick, new Pair<>('m', '\''));
         keyboardPairs.put(R.id.comma_semi_colon, new Pair<>(',', ';'));
         keyboardPairs.put(R.id.period_colon, new Pair<>('.', ':'));
-        keyboardPairs.put(R.id.left_bracket_duo, new Pair<>('{', '['));
         keyboardPairs.put(R.id.at_squiggly, new Pair<>('@', '~'));
         keyboardPairs.put(R.id.slash_carrot, new Pair<>('/', '^'));
         keyboardPairs.put(R.id.right_bracket_duo, new Pair<>('}', ']'));
@@ -89,6 +92,28 @@ public class MotorolaDroidMethodService extends InputMethodService {
         View view = getLayoutInflater().inflate(R.layout.keyboard_view, null);
         ButterKnife.bind(this, view);
         return view;
+    }
+
+    @OnClick(R.id.search)
+    public void onSearchClick() {
+        InputConnection inputConnection = getCurrentInputConnection();
+        if(inputConnection != null) {
+            final int options = this.getCurrentInputEditorInfo().imeOptions;
+            final int actionId = options & EditorInfo.IME_MASK_ACTION;
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_SEARCH:
+                    sendDefaultEditorAction(true);
+                    break;
+                case EditorInfo.IME_ACTION_GO:
+                    sendDefaultEditorAction(true);
+                    break;
+                case EditorInfo.IME_ACTION_SEND:
+                    sendDefaultEditorAction(true);
+                    break;
+                default:
+                    inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
+            }
+        }
     }
 
     @OnClick({R.id.alt_left, R.id.alt_right})
@@ -134,7 +159,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
                         sleepThread(deleteThread, 900);
                         while(deleteDown) {
                             deleteLastCharacter(inputConnection);
-                            sleepThread(deleteThread, 100);
+                            sleepThread(deleteThread, 90);
                         }
                     }
                 });
@@ -152,7 +177,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
             R.id.a_pipe, R.id.s_exclamation, R.id.d_hashtag, R.id.f_dollar_sign, R.id.g_percentage, R.id.h_equal,
             R.id.j_and, R.id.k_astrick, R.id.l_left_paren, R.id.question_mark_right_paren, R.id.z_less_than, R.id.x_greater_than,
             R.id.c_underscore, R.id.v_dash, R.id.b_plus, R.id.n_quote, R.id.m_tick, R.id.comma_semi_colon, R.id.period_colon,
-            R.id.left_bracket_duo, R.id.at_squiggly, R.id.slash_carrot, R.id.right_bracket_duo})
+            R.id.at_squiggly, R.id.slash_carrot, R.id.right_bracket_duo})
     public void onPairClick(View view) {
         InputConnection inputConnection = getCurrentInputConnection();
         if(inputConnection != null) {
