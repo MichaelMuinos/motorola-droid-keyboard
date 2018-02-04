@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:background="@android:color/black"
     android:orientation="horizontal"
-    android:paddingBottom="1dp"
-    android:paddingLeft="1dp"
-    android:paddingRight="1dp">
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -100,7 +100,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/underscore"
+            android:id="@+id/squiggly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/underscore"
+            android:layout_below="@+id/squiggly"
             android:paddingLeft="5dp"
             android:text="F"
             android:textColor="@color/whiteColor"

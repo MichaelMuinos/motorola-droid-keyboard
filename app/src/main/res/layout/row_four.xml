@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
     android:orientation="horizontal"
-    android:paddingBottom="1dp"
-    android:paddingLeft="1dp"
-    android:paddingRight="1dp">
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp">
 
     <View
         android:layout_width="0dp"
@@ -27,17 +26,7 @@
         android:text="Alt"
         android:textColor="@color/lightOrangeColor" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
-
     <RelativeLayout
-        android:id="@+id/squiggly"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
@@ -46,7 +35,35 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/underscore"
+            android:id="@+id/left_bracket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:text="["
+            android:textColor="@color/lightOrangeColor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/left_bracket"
+            android:paddingLeft="5dp"
+            android:text="{"
+            android:textColor="@color/whiteColor"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/squiggly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -57,7 +74,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/underscore"
+            android:layout_below="@+id/squiggly"
             android:paddingLeft="5dp"
             android:text="@"
             android:textColor="@color/whiteColor"
@@ -65,28 +82,16 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="1dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary" />
-
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_weight="3"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="␣"
         android:textColor="@color/whiteColor" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginRight="1dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary" />
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -116,14 +121,33 @@
 
     </RelativeLayout>
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/right_bracket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:text="]"
+            android:textColor="@color/lightOrangeColor" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/right_bracket"
+            android:paddingLeft="5dp"
+            android:text="}"
+            android:textColor="@color/whiteColor"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="0dp"

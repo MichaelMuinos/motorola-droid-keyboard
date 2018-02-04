@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
     android:orientation="horizontal"
-    android:padding="1dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="2dp">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -98,7 +98,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/underscore"
+            android:id="@+id/squiggly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -109,7 +109,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/underscore"
+            android:layout_below="@+id/squiggly"
             android:paddingLeft="5dp"
             android:text="R"
             android:textColor="@color/whiteColor"
