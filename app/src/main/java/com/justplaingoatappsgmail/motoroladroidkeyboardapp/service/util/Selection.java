@@ -1,4 +1,4 @@
-package com.justplaingoatappsgmail.motoroladroidkeyboardapp;
+package com.justplaingoatappsgmail.motoroladroidkeyboardapp.service.util;
 
 /**
  * Selection represents the status of the alt or caps button.

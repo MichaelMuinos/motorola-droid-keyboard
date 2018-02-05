@@ -1,4 +1,4 @@
-package com.justplaingoatappsgmail.motoroladroidkeyboardapp;
+package com.justplaingoatappsgmail.motoroladroidkeyboardapp.service;
 
 import android.inputmethodservice.InputMethodService;
 import android.support.v4.content.ContextCompat;
@@ -11,6 +11,9 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.justplaingoatappsgmail.motoroladroidkeyboardapp.R;
+import com.justplaingoatappsgmail.motoroladroidkeyboardapp.service.util.Selection;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -221,8 +224,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
                 Pair<Character, Character> pair = keyboardPairs.get(view.getId());
                 // find out what character needs to be displayed
                 char c;
-                if (alt == Selection.OFF)
-                    c = caps == Selection.OFF ? pair.first : Character.toUpperCase(pair.first);
+                if (alt == Selection.OFF) c = caps == Selection.OFF ? pair.first : Character.toUpperCase(pair.first);
                 else c = pair.second;
                 // display character
                 inputConnection.commitText(String.valueOf(c), 1);
