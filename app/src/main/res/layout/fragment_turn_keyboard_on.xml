@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/check"
-                android:layout_marginTop="35px"
+                android:layout_marginTop="45px"
                 android:gravity="center_horizontal"
                 android:text="Step completed!"
                 android:textColor="@color/greenColor"
@@ -56,12 +56,12 @@
             android:id="@+id/explanation_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="In order to use the keyboard, you must turn it on. Click the button below to do so!"
-            android:textSize="18sp" />
+            android:text="Click the button below and turn on the keyboard 'Old Keyboard (Motorola Droid Replica)'."
+            android:textSize="16sp" />
 
     </FrameLayout>
 
@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/step_one_frame_layout"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
         android:text="Turn on"
         app:bootstrapBrand="success"
         app:bootstrapSize="xl"

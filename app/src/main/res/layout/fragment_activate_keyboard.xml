@@ -1,13 +1,126 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.ActivateKeyboardFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.TurnKeyboardOnFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/keyboard_setup_text_view_two"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Keyboard Setup"
+        android:textSize="20sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/step_two_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/keyboard_setup_text_view_two"
+        android:gravity="center_horizontal"
+        android:text="Step 2 of 2" />
+
+    <FrameLayout
+        android:id="@+id/step_two_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/step_two_text_view"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:id="@+id/step_two_check_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/check_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_check_circle_black_24px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/check_two"
+                android:layout_marginTop="45px"
+                android:gravity="center_horizontal"
+                android:text="Step completed!"
+                android:textColor="@color/greenColor"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/step_two_warning_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/warning_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_warning_black_24px" />
+
+            <TextView
+                android:id="@+id/warning_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warning_image"
+                android:layout_marginTop="45px"
+                android:gravity="center_horizontal"
+                android:text="Previous setup step is not complete"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/warning_message"
+                android:layout_marginTop="45px"
+                android:gravity="center_horizontal"
+                android:text="Swipe to the previous step and follow the instructions given."
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/step_two_info_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/explanation_two_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Click the button below and choose the keyboard 'Old Keyboard (Motorola Droid Replica)'."
+                android:textSize="16sp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/turn_on_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/explanation_two_text_view"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:text="Choose keyboard"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="xl"
+                app:buttonMode="regular"
+                app:roundedCorners="false"
+                app:showOutline="false" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>
+

@@ -4,23 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.R;
+import com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.util.Constants;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TurnKeyboardOnFragment extends Fragment {
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
-    private static final int INPUT_METHOD_SETTING_RESULT_CODE = 9000;
+public class TurnKeyboardOnFragment extends Fragment {
 
     @BindView(R.id.step_one_check_wrapper) RelativeLayout checkWrapper;
     @BindView(R.id.explanation_text_view) TextView explanation;
@@ -32,15 +36,14 @@ public class TurnKeyboardOnFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_turn_keyboard_on, container, false);
         ButterKnife.bind(this, view);
-        isTurnedOn();
-
+        handleKeyboardEnabledLogic();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // check if the keyboard is turned on or not
+        handleKeyboardEnabledLogic();
     }
 
     @OnClick(R.id.turn_on_button)
@@ -49,10 +52,16 @@ public class TurnKeyboardOnFragment extends Fragment {
         startActivity(intent);
     }
 
-    private boolean isTurnedOn() {
-        String enabledInputMethods = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ENABLED_INPUT_METHODS);
-        Log.d("tag", enabledInputMethods);
-        return false;
+    private void handleKeyboardEnabledLogic() {
+        if(Constants.isKeyboardTurnedOn(getActivity())) {
+            turnOnButton.setVisibility(View.INVISIBLE);
+            explanation.setVisibility(View.INVISIBLE);
+            checkWrapper.setVisibility(View.VISIBLE);
+        } else {
+            turnOnButton.setVisibility(View.VISIBLE);
+            explanation.setVisibility(View.VISIBLE);
+            checkWrapper.setVisibility(View.INVISIBLE);
+        }
     }
 
 }
