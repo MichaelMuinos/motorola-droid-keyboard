@@ -7,18 +7,9 @@
     tools:context="com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.TurnKeyboardOnFragment">
 
     <TextView
-        android:id="@+id/keyboard_setup_text_view_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Keyboard Setup"
-        android:textSize="25sp" />
-
-    <TextView
         android:id="@+id/step_two_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/keyboard_setup_text_view_two"
         android:gravity="center_horizontal"
         android:text="Step 2 of 2" />
 

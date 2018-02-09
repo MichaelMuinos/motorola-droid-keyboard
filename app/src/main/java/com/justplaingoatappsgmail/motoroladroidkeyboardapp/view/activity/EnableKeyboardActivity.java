@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
 
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.R;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.ActivateKeyboardFragment;
@@ -31,7 +33,12 @@ public class EnableKeyboardActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         if(hasFocus) {
             ActivateKeyboardFragment page = (ActivateKeyboardFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":" + 1);
-            if(page != null) page.handleChooseKeyboardLogic();
+            if(page != null) {
+                page.handleChooseKeyboardLogic();
+                Log.d("tag", "page is not null");
+            } else {
+                Log.d("tag", "page is null");
+            }
         }
     }
 
