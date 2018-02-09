@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_relative_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.TurnKeyboardOnFragment">
 
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Keyboard Setup"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/step_two_text_view"
@@ -57,23 +58,24 @@
             android:id="@+id/step_two_warning_wrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/warning_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_warning_black_24px" />
 
             <TextView
                 android:id="@+id/warning_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/warning_image"
-                android:layout_marginTop="45px"
+                android:layout_below="@+id/warning_image"
                 android:gravity="center_horizontal"
                 android:text="Previous setup step is not complete"
+                android:textColor="@color/redColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -81,18 +83,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/warning_message"
-                android:layout_marginTop="45px"
                 android:gravity="center_horizontal"
                 android:text="Swipe to the previous step and follow the instructions given."
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/step_two_info_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/explanation_two_text_view"
@@ -105,7 +106,7 @@
                 android:textSize="16sp" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/turn_on_button"
+                android:id="@+id/activate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/explanation_two_text_view"

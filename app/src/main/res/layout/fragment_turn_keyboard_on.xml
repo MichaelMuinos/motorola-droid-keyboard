@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Keyboard Setup"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/step_one_text_view"
@@ -52,30 +52,38 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/explanation_text_view"
+        <RelativeLayout
+            android:id="@+id/step_one_info_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="Click the button below and turn on the keyboard 'Old Keyboard (Motorola Droid Replica)'."
-            android:textSize="16sp" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/explanation_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Click the button below and turn on the keyboard 'Old Keyboard (Motorola Droid Replica)'."
+                android:textSize="16sp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/turn_on_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/explanation_text_view"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:text="Turn on"
+                app:bootstrapBrand="success"
+                app:bootstrapSize="xl"
+                app:buttonMode="regular"
+                app:roundedCorners="false"
+                app:showOutline="false" />
+
+        </RelativeLayout>
 
     </FrameLayout>
-
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/turn_on_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/step_one_frame_layout"
-        android:layout_centerInParent="true"
-        android:text="Turn on"
-        app:bootstrapBrand="success"
-        app:bootstrapSize="xl"
-        app:buttonMode="regular"
-        app:roundedCorners="false"
-        app:showOutline="false" />
 
 </RelativeLayout>

@@ -7,4 +7,5 @@
     <color name="whiteColor">#FFF</color>
     <color name="lightOrangeColor">#ffc966</color>
     <color name="greenColor">#008000</color>
+    <color name="redColor">#FF0000</color>
 </resources>

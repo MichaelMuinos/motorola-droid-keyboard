@@ -26,6 +26,15 @@ public class EnableKeyboardActivity extends AppCompatActivity {
         pager.setAdapter(new EnableKeyboardAdapter(getSupportFragmentManager()));
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(hasFocus) {
+            ActivateKeyboardFragment page = (ActivateKeyboardFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":" + 1);
+            if(page != null) page.handleChooseKeyboardLogic();
+        }
+    }
+
     private class EnableKeyboardAdapter extends FragmentPagerAdapter {
 
         private static final int NUMBER_OF_FRAGMENTS = 2;

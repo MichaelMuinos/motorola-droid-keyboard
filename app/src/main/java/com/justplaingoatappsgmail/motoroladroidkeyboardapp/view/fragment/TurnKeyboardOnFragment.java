@@ -27,7 +27,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 public class TurnKeyboardOnFragment extends Fragment {
 
     @BindView(R.id.step_one_check_wrapper) RelativeLayout checkWrapper;
-    @BindView(R.id.explanation_text_view) TextView explanation;
+    @BindView(R.id.step_one_info_wrapper) RelativeLayout infoWrapper;
     @BindView(R.id.turn_on_button) BootstrapButton turnOnButton;
 
     @Override
@@ -54,12 +54,10 @@ public class TurnKeyboardOnFragment extends Fragment {
 
     private void handleKeyboardEnabledLogic() {
         if(Constants.isKeyboardTurnedOn(getActivity())) {
-            turnOnButton.setVisibility(View.INVISIBLE);
-            explanation.setVisibility(View.INVISIBLE);
+            infoWrapper.setVisibility(View.INVISIBLE);
             checkWrapper.setVisibility(View.VISIBLE);
         } else {
-            turnOnButton.setVisibility(View.VISIBLE);
-            explanation.setVisibility(View.VISIBLE);
+            infoWrapper.setVisibility(View.VISIBLE);
             checkWrapper.setVisibility(View.INVISIBLE);
         }
     }
