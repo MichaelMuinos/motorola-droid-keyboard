@@ -235,7 +235,7 @@ public class MotorolaDroidMethodService extends InputMethodService {
                     alt = Selection.OFF;
                     turnSelectionOffOrForeverHelper(altLeft, altRight, LIGHT_ORANGE, LIGHT_BLACK);
                 }
-                if (caps == Selection.ONCE) {
+                if (caps == Selection.ONCE && Character.isLetter(c)) {
                     caps = Selection.OFF;
                     turnSelectionOffOrForeverHelper(capsLeft, capsRight, WHITE, LIGHT_BLACK);
                 }
