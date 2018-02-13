@@ -1,5 +1,6 @@
 package com.justplaingoatappsgmail.motoroladroidkeyboardapp.service;
 
+import android.content.res.Configuration;
 import android.inputmethodservice.InputMethodService;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -91,6 +92,14 @@ public class MotorolaDroidMethodService extends InputMethodService {
         GRAY = ContextCompat.getColor(this, R.color.colorPrimaryLight);
         LIGHT_ORANGE = ContextCompat.getColor(this, R.color.lightOrangeColor);
         CYAN = ContextCompat.getColor(this, R.color.colorAccent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // on screen rotation, reset our keys
+        caps = Selection.OFF;
+        alt = Selection.OFF;
     }
 
     @Override
