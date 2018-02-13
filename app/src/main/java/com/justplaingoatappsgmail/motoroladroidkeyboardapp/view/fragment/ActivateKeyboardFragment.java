@@ -1,11 +1,8 @@
 package com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +12,10 @@ import android.widget.RelativeLayout;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.R;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.util.Constants;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class ActivateKeyboardFragment extends Fragment {
 

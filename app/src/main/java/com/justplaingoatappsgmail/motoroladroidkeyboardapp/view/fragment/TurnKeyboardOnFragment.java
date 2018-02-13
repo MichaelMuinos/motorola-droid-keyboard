@@ -7,22 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.R;
 import com.justplaingoatappsgmail.motoroladroidkeyboardapp.view.fragment.util.Constants;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class TurnKeyboardOnFragment extends Fragment {
 
